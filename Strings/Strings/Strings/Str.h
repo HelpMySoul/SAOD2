@@ -63,7 +63,9 @@ public:
 			pos++;
 		}
 		result[pos] = 0;
-		return result;
+		Str news(result);
+		delete result;
+		return news;
 
 	}
 };

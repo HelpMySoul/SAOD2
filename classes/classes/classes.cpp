@@ -9,9 +9,10 @@ int main()
     Complex v[4]{ 1,2, Complex(2,3) };
     Complex* pc = new Complex(1, 2);
     cout << pc->Re << ", " << pc->Im <<  endl;
+    delete pc;
     pc = new Complex[3];
     cout << pc[1].Re << endl;
-    delete pc;
+    delete [] pc;
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"

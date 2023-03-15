@@ -16,6 +16,8 @@ int main()
     std::cout << "before" << endl;
     Test t;
     std::cout << "after" << endl;
+    delete[] mp;
+    delete p;
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
