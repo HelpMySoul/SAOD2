@@ -7,12 +7,18 @@
 
 int unsigned SSCount(const char* s) {
 	int count = 0;
+	int max = 0;
 	PF pf;
 	pf.Init(s, strlen(s));
-	return sizeof(pf); // неизвестно почему всегда 24 выводит
+	for (int i = 0;i < sizeof(pf) ;i++) {
+		count++;
+		if (pf[i] > max) {
+			max = pf[i];
+		}
+	}
+	return count+1-max; // неизвестно почему всегда 24 выводит
 }
 int unsigned SimpleSSCount(const char* s) {
-	cout << s << endl;
 	string str(s);
 	string sarr[10000];
 	unsigned int n = 0;
@@ -61,13 +67,6 @@ int main()
 	cout << t << endl;
 	cout << SSCount(s) << endl;
 	cout << SimpleSSCount(s) << endl;
-	cout << SSCount(t) << endl;
-	cout << SimpleSSCount(t) << endl;
-	const int N2 = 1024;
-	char m[N2]{ 0 };
-	for (int i = 0; i < N2 - 1; i++)
-		m[i] = rand() % ('z' - 'a') + 'a';
-	cout << SSCount(m) << endl;
 	return 0;
 }
 
