@@ -10,7 +10,8 @@ using namespace std;
 
 int main()
 {
-    Str s = "ba";
+    Str s = "basdda";
+    cout << s << endl;
     Str f = "a";
     cout << s.Find(f, 1);
 }

@@ -42,18 +42,29 @@ public:
 		}
 		return *this;
 	}
-	operator const char* (){
-		return  (const char*)m_pStr;
+	operator const char* () const {
+		return m_pStr->m_pszData;
 	}
 	int Find(const char* t, int off) const {
-		int len_t = strlen(t);
-		int len_this = strlen((const char*)m_pStr);
-		if (off >= len_this)
-			return -1;
-		for (int i = off; i <= len_this - len_t; ++i) {
-			if (strncmp((const char*)(m_pStr + i), t, len_t) == 0)
-				return i;
+		int i = off;
+		int j = 0;
+		while (m_pStr->m_pszData[i] != '\0') {
+			if (m_pStr->m_pszData[i] == t[j]) {
+				// начинаем сравнивать следующие символы
+				i++;
+				j++;
+				if (t[j] == '\0') {
+					// вхождение найдено, возвращаем индекс начала образца
+					return i - j;
+				}
+			}
+			else {
+				// смещаем поиск и начинаем сравнивать с первым символом образца
+				i = i - j + 1;
+				j = 0;
+			}
 		}
+		// образец не найден
 		return -1;
 	}
 };
